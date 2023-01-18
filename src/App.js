@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import "./App.css";
-import RQSuperHeroes from "./components/RQSuperHeroes";
-import SuperHeroes from "./components/SuperHeroes";
-import Home from "./components/Home";
+import Products from "./views/Products/index";
+import RQProducts from "./views/RQProducts/index";
+import RQProductInfo from "./views/RQProducts/views/ProductInfo/index";
+import Home from "./views/Home/index";
 
 const queryClient = new QueryClient();
 
@@ -13,10 +15,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/super-heroes" element={<SuperHeroes />} />
-          <Route path="/rq-super-heroes" element={<RQSuperHeroes />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/rq-products" element={<RQProducts />} />
+          <Route path="/rq-products/:productId" element={<RQProductInfo />} />
         </Routes>
       </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   );
 }

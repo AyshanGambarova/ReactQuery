@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
-import Navbar from "./Navbar";
+import axios from "axios";
+import Navbar from "../../components/Navbar";
 
-const SuperHeroes = () => {
+const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/superheroes")
+      .get("https://dummyjson.com/products")
       .then((res) => {
-        setData(res.data);
+        setData(res.data.products);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -31,12 +31,16 @@ const SuperHeroes = () => {
   return (
     <>
       <Navbar />
-      <h2>Super Heroes Page</h2>
-      {data.map((hero) => {
-        return <div key={hero.id}>{hero.name}</div>;
+      <h2>Products</h2>
+      {data.map((product) => {
+        return (
+          <ul key={product.id}>
+            <li>{product.title}</li>
+          </ul>
+        );
       })}
     </>
   );
 };
 
-export default SuperHeroes;
+export default Index;
