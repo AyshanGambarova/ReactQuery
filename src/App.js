@@ -5,6 +5,8 @@ import "./App.css";
 import Products from "./views/Products/index";
 import RQProducts from "./views/RQProducts/index";
 import RQProductInfo from "./views/RQProducts/views/ProductInfo/index";
+import RQParallelQueries from "./views/ParallelQueries/index";
+import RQPaginated from "./views/RQPaginated/index";
 import Home from "./views/Home/index";
 
 const queryClient = new QueryClient();
@@ -18,6 +20,8 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/rq-products" element={<RQProducts />} />
           <Route path="/rq-products/:productId" element={<RQProductInfo />} />
+          <Route path="/rq-parallel" element={<RQParallelQueries />} />
+          <Route path="/rq-paginated" element={<RQPaginated />} />
         </Routes>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
