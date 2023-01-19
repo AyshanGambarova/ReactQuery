@@ -15,13 +15,13 @@ const Index = () => {
           <h3>Posts</h3>
           <ul>
             {posts?.data?.posts.map((post) => (
-              <li>{post.title}</li>
+              <li key={post.id}>{post.title}</li>
             ))}
           </ul>
           <h3>Users</h3>
           <ul>
             {users?.data?.users.map((user) => (
-              <li>{user.firstName}</li>
+              <li key={user.id}>{user.firstName}</li>
             ))}
           </ul>
         </>

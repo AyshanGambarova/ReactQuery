@@ -21,6 +21,9 @@ const Navbar = () => {
           <li>
             <Link to="/rq-paginated">RQ Paginated</Link>
           </li>
+          <li>
+            <Link to="/rq-infinite-scroll">RQ Infinite Scroll</Link>
+          </li>
         </ul>
       </nav>
     </div>
