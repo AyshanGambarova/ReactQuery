@@ -1,7 +1,10 @@
-import { useQuery } from "react-query";
+import { useQuery,useMutation,useQueryClient } from "react-query";
 import axios from "axios";
 const fetchData = () => {
   return axios.get("https://dummyjson.com/products");
+};
+const addProduct = (product) => {
+  return axios.post("https://dummyjson.com/products/add",product);
 };
 
 export const useProductsData = (onSuccess, onError) => {
@@ -11,7 +14,6 @@ export const useProductsData = (onSuccess, onError) => {
     // refetchInterval:2000,
     // refetchIntervalInBackground: true,
     //(Sehifeye daxil olanda request getmeyecek yalniz click olunduqda refetch olunacaq enabled false olanda)
-    enabled: false,
     onSuccess,
     onError,
     //Datanin icinde sadece bize lazim olanlari secende selectden istf. edirik
@@ -21,3 +23,11 @@ export const useProductsData = (onSuccess, onError) => {
     // },
   });
 };
+export const useAddProductData=()=>{
+  const queryClient=useQueryClient()
+  return useMutation(addProduct,{
+    onSuccess:()=>{
+      queryClient.invalidateQueries('products')
+    }
+  })
+}

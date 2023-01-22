@@ -16,7 +16,7 @@ const Index = () => {
   if (isLoading) return "Loading...";
   if (isError) return <h3>An error has occurred:{error.message}</h3>;
   const firstPage = () => setPageNumber(0);
-  const lastPage = () => setPageNumber(users.data.total / limit);
+  const lastPage = () => setPageNumber(users.data.total /users.data.limit);
   const prevPage = () => {
     if (pageNumber > 0) {
       setPageNumber((prevState) => prevState - 1);
@@ -24,7 +24,7 @@ const Index = () => {
     return;
   };
   const nextPage = () => {
-    if (pageNumber !== users.data.total / limit) {
+    if (pageNumber !== users.data.total / users.data.limit) {
       setPageNumber((prevState) => prevState + 1);
     }
     return;
